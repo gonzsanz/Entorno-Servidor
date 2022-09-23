@@ -13,7 +13,6 @@
     echo "1º Número : " . $numero1 . "<br>";
     echo "2º Número : " . $numero2 . "<br>";
     echo "<br>";
-    // cREAR UNA TABLA CON 2 FILAS Y 2 COLUMNAS
     echo "<table border='1'>";
     echo "<tr>";
     echo "<td>" . $numero1 . "</td>";
