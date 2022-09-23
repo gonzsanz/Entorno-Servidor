@@ -10,20 +10,41 @@
     <?php
     $numero1 = random_int(1, 10);
     $numero2 = random_int(1, 10);
+
     echo "1º Número : " . $numero1 . "<br>";
     echo "2º Número : " . $numero2 . "<br>";
     echo "<br>";
-    echo "<table border='1'>";
-    echo "<tr>";
-    echo "<td>" . $numero1 . "</td>";
-    echo "<td>" . $numero2 . "</td>";
-    echo "</tr>";
-    echo "<tr>";
-    echo "<td>" . $numero1 . "</td>";
-    echo "<td>" . $numero2 . "</td>";
-    echo "</tr>";
-    echo "</table>";
-
     ?>
+    <table border="1px">
+        <tr>
+            <th style="color: blue;background-color:gray;">Operación</th>
+            <th style="color: blue; background-color:gray;">Resultado</th>
+        </tr>
+        <tr>
+            <td><?php echo $numero1 . "+" . $numero2 ?></td>
+            <td><?php echo $numero1 + $numero2 ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $numero1 . "-" . $numero2 ?></td>
+            <td><?php echo $numero1 - $numero2 ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $numero1 . "*" . $numero2 ?></td>
+            <td><?php echo $numero1 * $numero2 ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $numero1 . "/" . $numero2 ?></td>
+            <td><?php echo $numero1 / $numero2 ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $numero1 . "%" . $numero2 ?></td>
+            <td><?php echo $numero1 % $numero2 ?></td>
+        </tr>
+        <tr>
+            <td><?php echo $numero1 . "**" . $numero2 ?></td>
+            <td><?php echo $numero1 ** $numero2 ?></td>
+        </tr>
+
+    </table>
 
 </body>
