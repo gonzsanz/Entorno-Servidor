@@ -14,7 +14,7 @@ function tirarDados($dados) {
     $nuevo = array();
 
     for ($i = 1; $i < 6; $i++) {
-        $nuevo[$i] = array_rand($dados);;
+        $nuevo[$i] = array_rand($dados);
     }
     return $nuevo;
 }
