@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <?php session_start() ?>
     <h1>Gracias por jugar con nosotros</h1>
     <h2>Su resultado final es de <?php echo $_SESSION["dinero"] ?> Euros</h2>
     <input type="submit" value="Nueva partida" onclick="location.href='index.php'">

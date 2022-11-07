@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if (isset($_POST["boton"])) {
         if ($_POST["boton"] == "Abandonar") {
-            include_once "despedida.php";
+            header("Location: despedida.php");
         }
     }
 }
