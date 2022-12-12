@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>CONSULTA PAGINACIÓN</title>
     <link href="web/default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="web/funciones.js"></script>
 </head>
 
 <body>
