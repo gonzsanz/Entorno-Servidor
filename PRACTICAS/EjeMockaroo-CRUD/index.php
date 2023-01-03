@@ -59,6 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             case "Anterior":
                 crudDetallesAnterior($_GET['id']);
                 break;
+            case "Imprimir":
+                crudDetallesImprimir($_GET['id']);
+                break;
         }
     }
 

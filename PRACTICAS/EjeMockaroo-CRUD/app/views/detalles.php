@@ -8,6 +8,7 @@
         <td rowspan="7">
             <img src=""></img>
         </td>
+        <td rowspan="7"><?= mostrarBandera($cli->ip_address) ?></td>
     </tr>
     <tr>
         <td>first_name:</td>
@@ -45,4 +46,6 @@
     <input type="hidden" name="id" value="<?= $cli->id ?>">
     <button type="submit" name="nav-detalles" value="Anterior"> Anterior << </button>
             <button type="submit" name="nav-detalles" value="Siguiente"> Siguiente >> </button>
+            <button type="submit" name="nav-detalles" value="Imprimir"> Imprimir </button>
+
 </form>

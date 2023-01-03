@@ -42,6 +42,11 @@ function crudDetallesAnterior($id) {
     }
 }
 
+function crudDetallesImprimir($id) {
+    $db = AccesoDatos::getModelo();
+    $cli = $db->getCliente($id);
+    include_once "app/views/imprimir.php";
+}
 
 function crudModificar($id) {
     $db = AccesoDatos::getModelo();
@@ -96,4 +101,16 @@ function crudPostModificar() {
     $cli->telefono      = $_POST['telefono'];
     $db = AccesoDatos::getModelo();
     $db->modCliente($cli);
+}
+function mostrarBandera($ip) {
+
+    $pais = file_get_contents('http://ip-api.com/json/' . $ip . '?fields=countryCode');
+    $pais = substr($pais, 16, 2);
+    $ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
+    if ($ipdat->geoplugin_countryCode == null) {
+        echo "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Pirate_Flag.svg/2560px-Pirate_Flag.svg.png' width='20' alt='No hay bandera'>";
+    } else {
+        $codigo = $ipdat->geoplugin_countryCode;
+        echo "<img src='https://flagcdn.com/" . strtolower($codigo) . ".svg' width='10' alt='Bandera del pais'>";
+    }
 }
