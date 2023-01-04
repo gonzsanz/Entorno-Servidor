@@ -8,8 +8,9 @@
             <td>id:</td>
             <td><input type="number" name="id" value="<?= $cli->id ?>" readonly> </td>
             <td rowspan="7">
-                <img src=""></img>
+                <?= mostrarImagen($cli->id) ?>
             </td>
+            <td rowspan="7"><?= mostrarBandera($cli->ip_address) ?></td>
         </tr>
         <tr>
             <td>first_name:</td>
