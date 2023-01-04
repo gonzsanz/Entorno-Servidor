@@ -1,12 +1,13 @@
 <?php
 
 require_once "vendor/autoload.php";
+require_once "app/controllers/crudclientes.php";
 
 $html = "<!DOCTYPE html>
 <html lang='es'>
     <head>
         <meta charset='UTF-8'>
-        <title>Datos $cli->first_name</title>
+        <title>Informe $cli->first_name</title>
         <style>
             body{
                 font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
@@ -33,9 +34,7 @@ $html = "<!DOCTYPE html>
             <tr>
                 <td>id:</td>
                 <td>$cli->id</td>
-                <td rowspan='7'>
-                    FOTO
-                </td>
+
             </tr>
             <tr>
                 <th>Nombre:</th>

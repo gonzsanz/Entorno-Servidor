@@ -114,3 +114,14 @@ function mostrarBandera($ip) {
         echo "<img src='https://flagcdn.com/" . strtolower($codigo) . ".svg' width='10' alt='Bandera del pais'>";
     }
 }
+
+function mostrarImagen($id) {
+    $fichero = str_pad(0, 7, "0", STR_PAD_LEFT);
+    $fichero = substr($fichero, 0, 8 - strlen($id)) . $id;
+    $fichero = "app/uploads/" . $fichero . ".jpg";
+
+    if (file_exists($fichero)) {
+        return "<img src='$fichero' width='20' alt='Imagen del cliente'>";
+    }
+    return "<img src='https://robohash.org/$id' width='20' alt='Foto perfil robot'>";
+}
