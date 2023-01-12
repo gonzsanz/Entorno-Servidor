@@ -1,5 +1,5 @@
 <hr>
-<form method="POST">
+<form enctype="multipart/form-data" method="POST">
     <input type="submit" name="orden" value="Modificar">
     <input type="submit" name="orden" value="Volver">
     <br><br>
@@ -43,6 +43,10 @@
         </tr>
         </tr>
     </table>
+    <br>
+    <label for="foto">Cambiar foto de perfil:</label><br>
+    <input type="file" name="foto" value="foto">
+    <br><br>
 </form>
 
 <form>

@@ -43,6 +43,33 @@ function mostrarImagen($id) {
     return "<img src='https://robohash.org/$id' width='20' alt='Foto perfil robot'>";
 }
 
+// funcion para cambiar la foto
+function cambiarFoto($id) {
+
+    $fichero = str_pad(0, 7, "0", STR_PAD_LEFT);
+    $fichero = substr($fichero, 0, 8 - strlen($id)) . $id;
+    $fichero = "app/uploads/" . $fichero . ".jpg";
+
+    $nombre_imagen = $_FILES['foto']['name'];
+    $tipo_imagen = $_FILES['foto']['type'];
+    $tam_imagen = $_FILES['foto']['size'];
+    
+    if ($tam_imagen <= 1000000) {
+        if ($tipo_imagen == "image/jpeg" || $tipo_imagen == "image/jpg" || $tipo_imagen == "image/png") {
+            if (!file_exists($fichero)) {
+                move_uploaded_file($_FILES['foto']['tmp_name'], $fichero);
+            } else {
+                unlink($fichero);
+                move_uploaded_file($_FILES['foto']['tmp_name'], $fichero);
+            }
+        } else {
+            echo "<script>alert('El tipo de imagen no es valido');</script>";
+        }
+    } else {
+        echo "<script>alert('El tamaño de la imagen es demasiado grande');</script>";
+    }
+}
+
 // Funcion para comprobar los datos
 function comprobarDatos($cli, $email, $ip, $telefono) {
     $db = AccesoDatos::getModelo();

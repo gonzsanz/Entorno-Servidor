@@ -24,6 +24,14 @@ if (!isset($_SESSION['posini'])) {
 $posAux = $_SESSION['posini'];
 //------------
 
+//Sesion para ordenar por campo, ordena por id por defecto
+if (!isset($_SESSION['ordenCampo'])) {
+    $_SESSION['ordenCampo'] = "id";
+}
+//Sesion para ordenar de manera ascendente o descendente, si pulsamos varias veces en el mismo campo, se cambia el orden de manera ascendente a descendente y viceversa
+if (!isset($_SESSION['ordenAscDesc'])) {
+    $_SESSION['ordenAscDesc'] = "";
+}
 
 
 ob_start(); // La salida se guarda en el bufer
@@ -95,6 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             case "Terminar":
                 crudTerminar();
                 break;
+            case "Ordenar":
+                $_SESSION['ordenCampo'] = $_GET['valor'];
+                if ($_SESSION['ordenAscDesc'] == "ASC") {
+                    $_SESSION['ordenAscDesc'] = "DESC";
+                } else {
+                    $_SESSION['ordenAscDesc'] = "ASC";
+                }
+                break;
         }
     }
 }
@@ -118,7 +134,9 @@ else {
 if (ob_get_length() == 0) {
     $db = AccesoDatos::getModelo();
     $posini = $_SESSION['posini'];
-    $tvalores = $db->getClientes($posini, FPAG);
+    $campoAordenar = $_SESSION['ordenCampo'];
+    $metodoOrdenacion = $_SESSION['ordenAscDesc'];
+    $tvalores = $db->getClientes($posini, FPAG, $campoAordenar, $metodoOrdenacion);
     require_once "app/views/list.php";
 }
 $contenido = ob_get_clean();

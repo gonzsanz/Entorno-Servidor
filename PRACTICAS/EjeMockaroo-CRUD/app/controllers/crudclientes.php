@@ -12,7 +12,9 @@ function crudTerminar() {
 
 function crudAlta() {
     $cli = new Cliente();
+    $db = AccesoDatos::getModelo();
     $orden = "Nuevo";
+    $cli->id = $db->getLastId();
     include_once "app/views/formulario.php";
 }
 
@@ -87,6 +89,7 @@ function crudPostAlta() {
     $db = AccesoDatos::getModelo();
 
     if (comprobarDatos($cli, $cli->email, $cli->ip_address, $cli->telefono)) {
+        cambiarFoto($cli->id);
         $db->addCliente($cli);
     } else {
         $orden = "Nuevo";
@@ -107,7 +110,9 @@ function crudPostModificar() {
     $cli->telefono      = $_POST['telefono'];
     $db = AccesoDatos::getModelo();
 
+    // 
     if (comprobarDatos($cli, $cli->email, $cli->ip_address, $cli->telefono)) {
+        cambiarFoto($cli->id);
         $db->modCliente($cli);
     } else {
         $orden = "Modificar";

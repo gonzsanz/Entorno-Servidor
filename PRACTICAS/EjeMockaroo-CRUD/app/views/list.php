@@ -5,12 +5,12 @@
 
 <table>
     <tr>
-        <th>id</th>
-        <th>first_name</th>
-        <th>email</th>
-        <th>gender</th>
-        <th>ip_address</th>
-        <th>teléfono</th>
+        <th><a href="?orden=Ordenar&valor=id">ID</a></th>
+        <th><a href="?orden=Ordenar&valor=first_name">First_name</a></th>
+        <th><a href="?orden=Ordenar&valor=email">Email</a></th>
+        <th><a href="?orden=Ordenar&valor=gender">Gender</a></th>
+        <th><a href="?orden=Ordenar&valor=ip_address">IP_address</a></th>
+        <th><a href="?orden=Ordenar&valor=telefono">Teléfono</a></th>
     </tr>
     <?php foreach ($tvalores as $valor) : ?>
         <tr>

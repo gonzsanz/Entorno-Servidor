@@ -53,11 +53,19 @@ class AccesoDatos {
 
 
     // SELECT Devuelvo la lista de Usuarios
-    public function getClientes($primero, $cuantos): array {
+    public function getClientes($primero, $cuantos, $campoAordenar, $metodoOrdenacion): array {
         $tuser = [];
         // Crea la sentencia preparada
         // echo "<h1> $primero : $cuantos  </h1>";
-        $stmt_usuarios  = $this->dbh->prepare("select * from Clientes limit $primero,$cuantos");
+
+        //Ordeno por el campo que me pasan y el metodo de ordenacion
+        if ($metodoOrdenacion == "ASC") {
+            $_SESSION['ordenAscDesc'] = "ASC";
+            $stmt_usuarios  = $this->dbh->prepare("select * from Clientes order by $campoAordenar DESC limit $primero,$cuantos");
+        } else {
+            $_SESSION['ordenAscDesc'] = "DESC";
+            $stmt_usuarios  = $this->dbh->prepare("select * from Clientes order by $campoAordenar ASC limit $primero,$cuantos");
+        }
         // Si falla termina el programa
         if ($stmt_usuarios == false) die(__FILE__ . ':' . __LINE__ . $this->dbh->error);
         // Ejecuto la sentencia
@@ -210,5 +218,21 @@ class AccesoDatos {
             $cli = $result->fetch_object('Cliente');
         }
         return $cli;
+    }
+
+    public function getLastId() {
+
+        $cli = false;
+
+        $stmt_usuario   = $this->dbh->prepare("SELECT AUTO_INCREMENT AS id FROM information_schema.Tables WHERE TABLE_SCHEMA='clientes' AND table_name='clientes'");
+        if (!$stmt_usuario) die($this->dbh->error);
+
+        $stmt_usuario->execute();
+        $result = $stmt_usuario->get_result();
+        if ($result) {
+            $cli = $result->fetch_object();
+        }
+
+        return $cli->id;
     }
 }
